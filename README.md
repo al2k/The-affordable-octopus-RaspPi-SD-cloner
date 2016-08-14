@@ -2,6 +2,8 @@
 
 We (Naturebytes) had to come up with our own in-house method of mass SD card cloning / duplication to write the 300+ Kickstarter kit SD cards needed for the Wildlife Cam Kit.  
 
+![The Octopus SD writer](http://naturebytes.org/downloads/octopus_SD_mDNS_replicator.jpg? "The octopus SD writer")
+
 To copy a vast number of SD images we would have needed to invest in a professional SD card duplicator, but even a 1-31 machine can cost shy of £2,400, so we decided to use the humble Raspberry Pi and individual USB writers as a network, ending up with what appeared to originally look like a weeping willow SD card writer, only later to become more of an octopus – which fits into the Naturebytes family quite well we thought.
 
 This repo is a how-to guide so you can build your own device if you ever feel the burning need to clone many hundreds of SD cards on the cheap.
@@ -45,6 +47,21 @@ Click open and a command line will load. You should see "Login as:"
 
 Enter: raspberry
 Password: pi
+
+This is the default login for the Raspberry Pi Raspbian OS. Next, we're going to change the hostname to a unique value so we can SSH in to it and command it to write an SD card. We'll do the same for each Rasp Pi using a terminal commander, manually, or via a shell script - whatever floats your boat.
+
+To change the hostname, SSH in and from the command line enter;
+
+sudo raspi-config
+
+You'll be presented with a configuration screen. Select Advanced > Hostname and you will be asked to enter a new hostname. I usually use "worker1" and continue until I've created 15 workers (for a 16 port hub). Repeat this process so you can create as many workers as you need, each one holding the image we are going to write. 
+
+Once you have your workers ready, pop them back into the Rasp Pis and boot them us with the USB writer attached. It will look something like this at this point:
+
+![The Octopus SD writer](http://naturebytes.org/downloads/octopus_SD_mDNS_replicator.jpg? "The octopus SD writer")
+
+
+
 
 
    
