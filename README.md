@@ -39,18 +39,18 @@ We're going to make life easy and use mDNS (Bonjour / Avahi) to connect to each 
 
 Once done, connect the Rasp Pi to your switch, and your PC to the switch too. Download a program called PuTTy that allows us to connect to the command line of the Rasp Pi if on Windows. The default hostname of a Rasp Pi using Jessie is raspberrypi. We can connect to it by selecting SSH in PuTTy. Change the port to 22 and enter raspberrypi.local as the host.
 
-```raspberrypi.local```
+`raspberrypi.local`
 
 Click open and a command line will load. You should see "Login as:"
 
-Enter: ```raspberry```
-Password: ```pi```
+Enter: `raspberry`
+Password: `pi`
 
 This is the default login for the Raspberry Pi Raspbian OS. Next, we're going to change the hostname to a unique value so we can SSH in to it and command it to write an SD card. We'll do the same for each Rasp Pi using a terminal commander, manually, or via a shell script - whatever floats your boat.
 
 To change the hostname, SSH in and from the command line enter;
 
-```sudo raspi-config```
+`sudo raspi-config`
 
 You'll be presented with a configuration screen. Select Advanced > Hostname and you will be asked to enter a new hostname. I usually use "worker1" and continue until I've created 15 workers (for a 16 port hub). Repeat this process so you can create as many workers as you need, each one holding the image we are going to write. 
 
@@ -66,7 +66,7 @@ To do the process manually you should connect to the first Rasp Pi using "worker
 
 Make a note of the path and remove the number at the end. The number represents the partition number but we want to write to the whole SD card, not just that one partition. You should end up with /dev/sdb (or something similar). Now that we have that we are able to command Rasp Pi to write the image we left in /home to it. Change the path to your image in the code below and the of= to your exact SD path as stated when you ran ```df -h```
 
-```sudo dd bs=4M if=[path_to_your_image.img] of=/dev/sdb```
+`sudo dd bs=4M if=[path_to_your_image.img] of=/dev/sdb`
 
 The Rasp Pi will start to write the image. Now all you need to do is repeat this for the other Rasp Pis, and when complete you'll see that it will present the time it took to write and drop back to the command line ready to run again. You can then remove the SD card and replace it with a fresh new one ready to continue the process. In this way you can replicate SDs for cheap and expand the number of SD writers to as many as required. I would advise writing a shell script or Python script to automatically command each Rasp Pi in your network to start a fresh write after you have replaced the SD when you are doing more than 10.
 
