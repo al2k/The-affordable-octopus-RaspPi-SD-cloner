@@ -7,3 +7,5 @@ To copy a vast number of SD images we would have needed to invest in a professio
 This repo is a how-to guide so you can build your own device if you ever feel the burning need to clone many hundreds of SD cards on the cheap.
 
 *****
+
+![The original Weeping Willow prototype](http://naturebytes.org/wp-content/uploads/2015/12/SD_writer1.jpg? "The original Weeping Willow prototype")
