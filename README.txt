@@ -1,1 +1,0 @@
-Octopus SD Cloner v1
